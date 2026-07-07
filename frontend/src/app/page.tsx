@@ -37,6 +37,24 @@ export default function Home() {
   const [resultsFilter, setResultsFilter] = useState<'all' | 'success' | 'skipped'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   
+  // Custom Toast State
+  const [toastMessage, setToastMessage] = useState<string>('');
+  const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const triggerToast = (msg: string) => {
+    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    setToastMessage(msg);
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastMessage('');
+    }, 3000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    };
+  }, []);
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragCounterRef = useRef<number>(0);
   const [isDragActive, setIsDragActive] = useState<boolean>(false);
@@ -408,14 +426,14 @@ export default function Home() {
 
         <nav className="nav-section">
           <span className="nav-title">Main</span>
-          <a href="#" className="nav-link"><LayoutDashboard size={16} /> Dashboard</a>
-          <a href="#" className="nav-link"><Sparkles size={16} /> Generate Leads</a>
-          <a href="#" className="nav-link"><Users size={16} /> Manage Leads</a>
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); triggerToast("Dashboard is a mockup placeholder. The active assignment feature is under Lead Sources."); }}><LayoutDashboard size={16} /> Dashboard</a>
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); triggerToast("Lead generation features are mockup placeholders. The active assignment feature is under Lead Sources."); }}><Sparkles size={16} /> Generate Leads</a>
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); triggerToast("Lead management is a mockup placeholder. The active assignment feature is under Lead Sources."); }}><Users size={16} /> Manage Leads</a>
           
           <span className="nav-title">Control Center</span>
           <a href="#" className="nav-link active"><Database size={16} /> Lead Sources</a>
-          <a href="#" className="nav-link"><Key size={16} /> API Center</a>
-          <a href="#" className="nav-link"><Settings size={16} /> Settings</a>
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); triggerToast("API Center is a mockup placeholder. The active assignment feature is under Lead Sources."); }}><Key size={16} /> API Center</a>
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); triggerToast("Settings dashboard is a mockup placeholder. The active assignment feature is under Lead Sources."); }}><Settings size={16} /> Settings</a>
         </nav>
       </aside>
 
@@ -968,6 +986,14 @@ export default function Home() {
 
         </div>
       </main>
+
+      {/* Floating interactive toast */}
+      {toastMessage && (
+        <div className="toast-notification">
+          <Info size={16} style={{ color: 'var(--brand-primary)' }} />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </div>
   );
 }
