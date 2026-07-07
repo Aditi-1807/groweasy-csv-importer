@@ -1,0 +1,7 @@
+Full Name,Email Address,Contact No,Date Created,Company Name,City,State,Country,Status,Source,Notes,Description
+John Doe,john.doe@example.com,+91 98765 43210,2026-05-13 14:20:48,GrowEasy,Mumbai,Maharashtra,India,GOOD_LEAD_FOLLOW_UP,leads_on_demand,Client is asking to reschedule demo,Asking for demo reschedule
+Sarah Johnson,sarah.johnson@example.com,+919876543211,2026-05-13 14:25:30,Tech Solutions,Bangalore,Karnataka,India,DID_NOT_CONNECT,meridian_tower,Person was busy,Will try again next week
+Rajesh Patel,rajesh.patel@example.com,+919876543212,2026-05-13 14:30:15,Startup Inc,Delhi,Delhi,India,BAD_LEAD,eden_park,Not interested in our services,Not interested
+Priya Singh,priya.singh@example.com,+919876543213,2026-05-13 14:35:22,Enterprise Corp,Pune,Maharashtra,India,SALE_DONE,varah_swamy,Deal closed,Onboarding in progress
+Invalid Lead, , ,2026-05-13 14:40:00,Test Corp,Pune,Maharashtra,India,GOOD_LEAD_FOLLOW_UP,sarjapur_plots,Lacks contact info,This row should be skipped because it lacks both email and phone
+Ankit Kumar,ankit.kumar@example.com;ankit2@example.com,+91 99999 88888;+91 77777 66666,2026-05-13 14:45:00,Innovations,Noida,Uttar Pradesh,India,GOOD_LEAD_FOLLOW_UP,varah_swamy,Has multiple emails and phone numbers,Test multiple emails and phone parsing
